@@ -1,1 +1,6 @@
-Genetic Algorithm code with pretrained Decoder and LSTM models.
+# Predicting Optimal Particle Morphology Conditions: A Reverse Engineering Approach:
+
+
+---
+
+## ** Repository Structure**
