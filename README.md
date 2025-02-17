@@ -20,8 +20,9 @@
 │──  **LSTM_target_dataset_maker.py** &nbsp; Creates target datasets for LSTM training<br>
 │──  **LSTM_model.py** &nbsp; Defines & trains the LSTM model<br>
 │──  **LSTM_model.sav** &nbsp; Pretrained LSTM model<br>
-│──  **GA_customized.py** &nbsp; Implementation of Genetic Algorithm for optimization<br>
 │──  **optimization_dataset.py** &nbsp; Dataset creation script for optimization<br>
+│──  **GA_customized.py** &nbsp; Implementation of Genetic Algorithm for optimization<br>
+
 
 
 
