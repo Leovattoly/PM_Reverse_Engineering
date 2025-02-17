@@ -417,8 +417,8 @@ def mutate_ext(parent):
 
     print("Sum Mutation ext:", sum(m1_feed_values) + 3, sum(m2_feed_values) + 3)
 
-    # child.append(np.random.randint(60, 80))
-    child.append(temp)
+    child.append(np.random.randint(60, 80))
+    # child.append(temp)
     child.extend(m1_feed_values)
     child.extend(m2_feed_values)
 
@@ -472,8 +472,8 @@ def mutate_rm(parent):
 
     print("Sum Mutation rm:", sum(m1_feed_values) + 3, sum(m2_feed_values) + 3)
 
-    # child.append(np.random.randint(60, 80))
-    child.append(temp)
+    child.append(np.random.randint(60, 80))
+    # child.append(temp)
     child.extend(m1_feed_values)
     child.extend(m2_feed_values)
 
