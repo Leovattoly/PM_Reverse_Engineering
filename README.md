@@ -6,10 +6,10 @@
 ##  Repository Structure
 
 ──  Data/- **Contains datasets for training, testing & optimization** <br>
-      &nbsp;  &nbsp;│──  train.csv &nbsp; Training the AE model <br>
-      &nbsp;  &nbsp;│──  test.csv &nbsp; Training the LSTM model<br>
-      &nbsp;  &nbsp;│── test_test_dataset.csv &nbsp; Testing both AE & LSTM models<br>
-      &nbsp;  &nbsp;│── opt.csv &nbsp; used in the GA to verify the model efficiency<br>
+      &nbsp;  &nbsp;&nbsp;  &nbsp;│──  train.csv &nbsp; Training the AE model <br>
+      &nbsp;  &nbsp;&nbsp;  &nbsp;│──  test.csv &nbsp; Training the LSTM model<br>
+      &nbsp;  &nbsp;&nbsp;  &nbsp;│── test_test_dataset.csv &nbsp; Testing both AE & LSTM models<br>
+      &nbsp;  &nbsp;&nbsp;  &nbsp;│── opt.csv &nbsp; used in the GA to verify the model efficiency<br>
       **Unable to upload train.csv & test.csv due to size<br>**
       
 │──  **Dataset.py** &nbsp; POLYMAT simulator for creating datasets<br>
