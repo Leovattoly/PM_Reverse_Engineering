@@ -8,7 +8,7 @@ def load(dataset):
     Npivot = 30
     temp = []
     features = []
-    data = pd.read_csv("Data/weighted_data/" + dataset + ".csv")
+    data = pd.read_csv("Data/" + dataset + ".csv")
 
     temp = (data['Temperature']).tolist()
 
