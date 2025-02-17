@@ -5,10 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_percentage_error, mean_absolute_error
-normalize_value_non_eq_test = 1641775
 
-# normalize_value_non_eq_test_test = 1067354
-# normalize_value_eq_test_test = 1423888
+NORMALIZE_VALUE = 1641775
 
 def Map_error(user_data, pred_data):
     mae = mean_absolute_error(user_data, pred_data)
@@ -40,8 +38,8 @@ def load(data):
             non_eq_cl.extend(data.loc[i, ['non_eq_cl'f"{kk}"]])
             eq_cl.extend(data.loc[i, ['eq_cl'f"{kk}"]])
 
-        non_eq_cl[:] = [i / normalize_value_non_eq_test for i in non_eq_cl]
-        eq_cl[:] = [i / normalize_value_non_eq_test for i in eq_cl]
+        non_eq_cl[:] = [i / NORMALIZE_VALUE for i in non_eq_cl]
+        eq_cl[:] = [i / NORMALIZE_VALUE for i in eq_cl]
 
         non_eq_cl_list.append(non_eq_cl)
         eq_cl_list.append(eq_cl)
