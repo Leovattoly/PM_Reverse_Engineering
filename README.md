@@ -5,7 +5,7 @@
 
 ##  Repository Structure
 
-──  Data/ # Contains datasets for training, testing & optimization <br>
+──  Data/- Contains datasets for training, testing & optimization <br>
       &nbsp;  &nbsp;│──  train.csv # Training the AE model <br>
       &nbsp;  &nbsp;│──  test.csv # Training the LSTM model<br>
       &nbsp;  &nbsp;│── test_test_dataset.csv # Testing both AE & LSTM models<br>
