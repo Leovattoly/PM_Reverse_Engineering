@@ -598,7 +598,7 @@ def genetic_algorithm(target, population_size, generations, sol_per_pop, crossov
     return target, best_solns, best_solns_AE_LSTM, global_best_individual, global_best_fitness, best_fitnesses
 
 
-opt_data = np.load("AE_4/weighted/GA/target.npy")
+opt_data = np.load("GA/target.npy")
 
 best_solutions = []
 best_rmses = []
