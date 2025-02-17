@@ -1,4 +1,4 @@
-# Predicting Optimal Particle Morphology Conditions: A Reverse Engineering Approach:
+# Predicting Optimal Particle Morphology Conditions: A Reverse Engineering Approach
 
 
 ---
