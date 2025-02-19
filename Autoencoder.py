@@ -45,32 +45,35 @@ train_data, val_data = train_test_split(train_data, test_size=0.20, random_state
 input_dim = train_data.shape[1]
 encoding_dim = 8  # Latent space size
 
-# Define Encoder
 input_layer = Input(shape=(input_dim,))
-encoder_hidden1 = (Dense(64, activation='relu')(input_layer))
-encoder_hidden1 = Dropout(0.2)(encoder_hidden1)
-encoder_hidden2 = (Dense(32, activation='relu')(encoder_hidden1))
-encoder_hidden2 = BatchNormalization()(encoder_hidden2)
-encoder_hidden3 = (Dense(16, activation='relu')(encoder_hidden2))
-encoder_hidden3 = BatchNormalization()(encoder_hidden3)
-encoder_hidden4 = (Dense(8, activation='relu')(encoder_hidden3))
+encoder_hidden1 = Dense(32, activation=None)(input_layer)
+encoder_hidden1 = BatchNormalization()(encoder_hidden1)
+encoder_hidden1 = Activation('relu')(encoder_hidden1)
+encoder_hidden1 = Dropout(0.3)(encoder_hidden1)
 
-encoded = Dense(encoding_dim, activation='sigmoid', activity_regularizer=regularizers.l1(1e-6))(encoder_hidden4)
+encoder_hidden2 = Dense(16, activation=None)(encoder_hidden1)
+encoder_hidden2 = BatchNormalization()(encoder_hidden2)
+encoder_hidden2 = Activation('relu')(encoder_hidden2)
+
+encoded = Dense(encoding_dim, activation='sigmoid',
+                activity_regularizer=regularizers.l1_l2(1e-5, 1e-5))(encoder_hidden2)
 
 # Decoder
-decoder_hidden1 = (Dense(8, activation='relu')(encoded))
+decoder_hidden1 = Dense(16, activation=None)(encoded)
 decoder_hidden1 = BatchNormalization()(decoder_hidden1)
-decoder_hidden2 = Dense(16, activation='relu')(decoder_hidden1)
+decoder_hidden1 = Activation('relu')(decoder_hidden1)
+decoder_hidden1 = Dropout(0.3)(decoder_hidden1)
+
+decoder_hidden2 = Dense(32, activation=None)(decoder_hidden1)
 decoder_hidden2 = BatchNormalization()(decoder_hidden2)
-decoder_hidden3 = Dense(32, activation='relu')(decoder_hidden2)
-decoder_hidden3 = BatchNormalization()(decoder_hidden3)
-decoder_hidden4 = (Dense(64, activation='relu')(decoder_hidden3))
-decoded = Dense(input_dim, activation='sigmoid')(decoder_hidden4)
+decoder_hidden2 = Activation('relu')(decoder_hidden2)
+
+decoded = Dense(input_dim, activation='sigmoid')(decoder_hidden2)
 
 # Build Autoencoder
 autoencoder = Model(input_layer, decoded)
-autoencoder.compile(optimizer=Nadam(learning_rate=0.001), loss='mse',
-                    metrics=[tf.keras.metrics.RootMeanSquaredError(), 'mae'])
+autoencoder.compile(optimizer=Nadam(learning_rate=5e-5), loss='mse', metrics=[tf.keras.metrics.RootMeanSquaredError(),'mae'])
+
 
 # Callbacks
 lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=50)
@@ -78,7 +81,7 @@ early_stopping = EarlyStopping(monitor='val_loss', patience=200, restore_best_we
 
 # Train Autoencoder
 history = autoencoder.fit(train_data, train_data,
-                          epochs=5000, batch_size=64, shuffle=True,
+                          epochs=5000, batch_size=32, shuffle=True,
                           validation_data=(val_data, val_data),
                           callbacks=[early_stopping, lr_scheduler])
 
